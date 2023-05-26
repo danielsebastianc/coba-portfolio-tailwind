@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,7 +11,17 @@
       rel="stylesheet"
     />
     <title>Portfolio Tailwind CSS</title>
-    <link rel="stylesheet" href="dist/output.css" />
+    <link rel="stylesheet" href="dist/css/final.css" />
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
   <body>
     <!-- Header Start -->
@@ -38,7 +48,7 @@
               id="nav-menu"
               class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none"
             >
-              <ul class="block lg:flex">
+              <ul class="block lg:flex [&>*>a]:dark:text-white">
                 <li class="group">
                   <a
                     href="#home"
@@ -81,6 +91,22 @@
                     >Contact</a
                   >
                 </li>
+                <li class="flex items-center py-2 pl-8">
+                  <div class="flex">
+                    <span class="mr-2 text-sm text-slate-500 dark:text-white">light</span>
+                    <input type="checkbox" class="hidden" id="dark-mode-toggle" />
+                    <label for="dark-mode-toggle">
+                      <div
+                        class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1"
+                      >
+                        <div
+                          class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"
+                        ></div>
+                      </div>
+                    </label>
+                    <span class="ml-2 text-sm text-slate-500 dark:text-white">dark</span>
+                  </div>
+                </li>
               </ul>
             </nav>
           </div>
@@ -90,22 +116,22 @@
     <!-- Header End -->
 
     <!-- Hero Section Start -->
-    <section id="home" class="pt-36">
+    <section id="home" class="pt-36 dark:bg-dark">
       <div class="container">
         <div class="flex flex-wrap">
           <div class="w-full self-center px-4 lg:w-1/2">
             <h1 class="text-base font-semibold text-primary md:text-xl">
               Hello People👋, I'm
-              <span class="mt-1 block text-4xl font-bold text-dark lg:text-5xl">
+              <span class="mt-1 block text-4xl font-bold text-dark dark:text-white lg:text-5xl">
                 Daniel Sebastian</span
               >
             </h1>
             <h2 class="mb-5 text-lg font-medium text-secondary lg:text-2xl">
-              Gabut & <span class="text-dark">Depressed</span>
+              Gabut & <span class="text-dark dark:text-white">Depressed</span>
             </h2>
             <p class="mb-10 font-medium leading-relaxed text-secondary">
               Theres nothing good in my life. Learning anything that might be
-              <span class="font-bold text-dark">something.</span>
+              <span class="font-bold text-dark dark:text-white">something.</span>
             </p>
             <a
               href="#"
@@ -119,12 +145,10 @@
               <img
                 src="dist/img/ds1.png"
                 alt="Daniel Sebastian"
-                class="mx-auto max-w-full scale-75 rounded-lg"
+                class="relative z-10 mx-auto max-w-full scale-75 rounded-lg"
               />
 
-              <span
-                class="absolute bottom-10 left-1/2 -z-10 -translate-x-1/2 md:bottom-20 md:scale-125"
-              >
+              <span class="absolute bottom-10 left-1/2 -translate-x-1/2 md:bottom-20 md:scale-125">
                 <svg
                   width="400"
                   height="400"
@@ -146,12 +170,12 @@
     <!-- Hero Section End -->
 
     <!-- About Section Start -->
-    <section id="about" class="pb-32 pt-36">
+    <section id="about" class="pb-32 pt-36 dark:bg-dark">
       <div class="container">
         <div class="flex flex-wrap">
           <div class="mb-10 w-full px-4 lg:w-1/2">
             <h4 class="mb-3 text-lg font-bold uppercase text-primary">About Me</h4>
-            <h2 class="mb-5 max-w-md text-3xl font-bold text-dark lg:text-4xl">
+            <h2 class="mb-5 max-w-md text-3xl font-bold text-dark dark:text-white lg:text-4xl">
               Web programming is fun!<span class="align-top text-xs md:text-sm">*lies</span>
             </h2>
             <p class="max-w-xl text-base font-medium text-secondary lg:text-lg">
@@ -160,7 +184,7 @@
             </p>
           </div>
           <div class="w-full px-4 lg:w-1/2">
-            <h3 class="mb-4 text-2xl font-semibold text-dark lg:pt-10 lg:text-3xl">
+            <h3 class="mb-4 text-2xl font-semibold text-dark dark:text-white lg:pt-10 lg:text-3xl">
               Lets be friends!
             </h3>
             <p class="mb-6 text-base font-medium text-secondary">
@@ -255,12 +279,12 @@
     <!-- About Section End -->
 
     <!-- Portfolio Section Start -->
-    <section id="portfolio" class="bg-slate-100 pb-16 pt-36">
+    <section id="portfolio" class="bg-slate-100 pb-16 pt-36 dark:bg-slate-800">
       <div class="container">
         <div class="w-full px-4">
           <div class="mx-auto mb-16 max-w-xl text-center">
             <h4 class="mb-2 text-lg font-semibold text-primary">Portfolio</h4>
-            <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">
+            <h2 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl lg:text-5xl">
               Newest Projects
             </h2>
             <p class="text-md font-medium text-secondary md:text-lg">
@@ -274,7 +298,9 @@
             <div class="overflow-hidden rounded-md shadow-md">
               <img src="dist/img/portfolio/1.jpeg" alt="Property Renting Web App" width="w-full" />
             </div>
-            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark">Renthaven Property Renting</h3>
+            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark dark:text-white">
+              Renthaven Property Renting
+            </h3>
             <p class="text-base font-medium text-secondary">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum quod porro aut?
             </p>
@@ -283,7 +309,7 @@
             <div class="overflow-hidden rounded-md shadow-md">
               <img src="dist/img/portfolio/1.jpeg" alt="E-Commerce" width="w-full" />
             </div>
-            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark">E-Commerce</h3>
+            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark dark:text-white">E-Commerce</h3>
             <p class="text-base font-medium text-secondary">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum quod porro aut?
             </p>
@@ -292,7 +318,9 @@
             <div class="overflow-hidden rounded-md shadow-md">
               <img src="dist/img/portfolio/1.jpeg" alt="Technical Documentation" width="w-full" />
             </div>
-            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark">Technical Documentation</h3>
+            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark dark:text-white">
+              Technical Documentation
+            </h3>
             <p class="text-base font-medium text-secondary">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum quod porro aut?
             </p>
@@ -301,7 +329,7 @@
             <div class="overflow-hidden rounded-md shadow-md">
               <img src="dist/img/portfolio/1.jpeg" alt="Tribute Page" width="w-full" />
             </div>
-            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark">Tribute Page</h3>
+            <h3 class="mb-3 mt-5 text-xl font-semibold text-dark dark:text-white">Tribute Page</h3>
             <p class="text-base font-medium text-secondary">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum quod porro aut?
             </p>
@@ -312,12 +340,12 @@
     <!-- Portfolio Section End -->
 
     <!-- Clients Section Start -->
-    <section id="clients" class="bg-slate-800 pb-32 pt-36">
+    <section id="clients" class="bg-slate-800 pb-32 pt-36 dark:bg-slate-300">
       <div class="container">
         <div class="w-full px-4">
           <div class="mx-auto mb-16 text-center">
             <h4 class="mb-2 text-lg font-semibold text-primary">Clients</h4>
-            <h2 class="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            <h2 class="mb-4 text-3xl font-bold text-white dark:text-dark sm:text-4xl lg:text-5xl">
               Who Have Worked Together
             </h2>
             <p class="text-md font-medium text-secondary md:text-lg">
@@ -358,12 +386,12 @@
     <!-- Clients Section End -->
 
     <!-- Blog Section Start -->
-    <section id="blog" class="bg-slate-100 pb-32 pt-36">
+    <section id="blog" class="bg-slate-100 pb-32 pt-36 dark:bg-dark">
       <div class="container">
         <div class="px4 w-full">
           <div class="mx-auto mb-16 max-w-xl text-center">
             <h4 class="mb-2 text-lg font-semibold text-primary">Blog</h4>
-            <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">
+            <h2 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl lg:text-5xl">
               Latest Stories
             </h2>
             <p class="text-md font-medium text-secondary md:text-lg">
@@ -374,7 +402,9 @@
         </div>
         <div class="flex flex-wrap">
           <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg xl:h-[444px]">
+            <div
+              class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800 xl:h-[444px]"
+            >
               <img
                 src="https://source.unsplash.com/360x200?programming"
                 alt="Programming"
@@ -384,7 +414,7 @@
                 <h3>
                   <a
                     href=""
-                    class="mb-3 block truncate text-lg font-semibold text-dark hover:text-primary"
+                    class="mb-3 block truncate text-lg font-semibold text-dark hover:text-primary dark:text-white"
                     >Learning Programming</a
                   >
                 </h3>
@@ -401,7 +431,9 @@
           </div>
 
           <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg xl:h-[444px]">
+            <div
+              class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800 xl:h-[444px]"
+            >
               <img
                 src="https://source.unsplash.com/360x200?mechanical+keyboard"
                 alt="Programming"
@@ -411,7 +443,7 @@
                 <h3>
                   <a
                     href=""
-                    class="mb-3 block truncate text-lg font-semibold text-dark hover:text-primary"
+                    class="mb-3 block truncate text-lg font-semibold text-dark hover:text-primary dark:text-white"
                     >GMMK Pro Keyboard Review
                   </a>
                 </h3>
@@ -429,7 +461,9 @@
           </div>
 
           <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg xl:h-[444px]">
+            <div
+              class="mb-10 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800 xl:h-[444px]"
+            >
               <img
                 src="https://source.unsplash.com/360x200?coffee"
                 alt="Programming"
@@ -439,7 +473,7 @@
                 <h3>
                   <a
                     href=""
-                    class="mb-3 block truncate text-lg font-semibold text-dark hover:text-primary"
+                    class="mb-3 block truncate text-lg font-semibold text-dark hover:text-primary dark:text-white"
                     >Enjoying a Cup of Coffee</a
                   >
                 </h3>
@@ -461,12 +495,14 @@
     <!-- Blog Section End -->
 
     <!-- Contact Section Start -->
-    <section id="contact" class="pb-32 pt-36">
+    <section id="contact" class="pb-32 pt-36 dark:bg-slate-800">
       <div class="container">
         <div class="w-full px-4">
           <div class="mx-auto mb-16 max-w-xl text-center">
             <h4 class="mb-2 text-lg font-semibold text-primary">Contact</h4>
-            <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">Contact Us</h2>
+            <h2 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl lg:text-5xl">
+              Contact Us
+            </h2>
             <p class="text-md font-medium text-secondary md:text-lg">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, vel.
             </p>
@@ -668,6 +704,16 @@
       </div>
     </footer>
     <!-- Footer End -->
+
+    <!-- Back to top Start -->
+    <a
+      href="#home"
+      id="to-top"
+      class="fixed bottom-4 right-4 z-[9999] hidden h-14 w-14 items-center justify-center rounded-full bg-primary p-4 hover:animate-pulse"
+    >
+      <span class="mt-2 block h-5 w-5 rotate-45 border-l-2 border-t-2"></span>
+    </a>
+    <!-- Back to top End -->
     <script src="dist/js/script.js"></script>
   </body>
 </html>
